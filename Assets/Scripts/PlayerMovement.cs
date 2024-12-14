@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     
     public float sprintSpeed = 18f; // Add a sprint speed
 
-    void Start()
+    void Start()    
     {
         controller = GetComponent<CharacterController>();
     }
