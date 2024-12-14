@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         CheckGround();
+        
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 

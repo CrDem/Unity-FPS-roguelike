@@ -34,13 +34,16 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (lastPos == transform.position && Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position) > 5f)
+        float distToPlayer = Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position,
+            transform.position);
+        
+        if (lastPos == transform.position && distToPlayer > 5f)
         {
             Destroy(gameObject);
         }
-       
         
-        if (transform.position.y > 10f)
+        
+        if (transform.position.y > 10f || distToPlayer > 100f)
         {
             Destroy(gameObject);
         }
