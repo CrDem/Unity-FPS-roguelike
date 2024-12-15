@@ -15,14 +15,11 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        print(collision.gameObject.tag);
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            print("hit enemy");
             Destroy(gameObject);
         }
 		if (collision.gameObject.CompareTag("Surface")) {
-            print("hit surface");
             --reboundLeft;
             if(reboundLeft <= 0)
                 Destroy(gameObject);
