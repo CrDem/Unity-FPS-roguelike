@@ -8,6 +8,7 @@ TagManager:
   - BoundingBox
   - Enemy
   - Surface
+  - PlayerWeapon
   layers:
   - Default
   - TransparentFX
