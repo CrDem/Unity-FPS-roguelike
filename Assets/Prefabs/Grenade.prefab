@@ -369,7 +369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 2
   explosionRadius: 3.96
-  maxDamage: 100
+  maxDamage: 50
   damageFalloff:
     serializedVersion: 2
     m_Curve:
@@ -394,4 +394,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  explosionEffect: {fileID: 0}
+  explosionEffect: {fileID: 3217268899105299563, guid: dad36b8f817e8ed40a2d5000820f0b22, type: 3}

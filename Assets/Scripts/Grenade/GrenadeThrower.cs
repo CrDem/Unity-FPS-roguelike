@@ -7,7 +7,7 @@ public class GrenadeThrower : MonoBehaviour
     public Transform grenadeSpawnPoint;
     public float throwForce = 10f; // ���� ������
     public float upwardForce = 2f; // ������������ ������������ ������
-    public int grenadeCount = 5; // ���������� ������
+    public int grenadeCount = 2; // ���������� ������
 
     [Header("Camera Settings")]
     public Camera playerCamera;
@@ -20,7 +20,7 @@ public class GrenadeThrower : MonoBehaviour
     private void Update()
     {
         // ������ ������� �� ������� ������� ������ ����
-        if (Input.GetMouseButtonDown(2) && grenadeCount > 0 && Time.time >= lastThrowTime + throwCooldown)
+        if (Input.GetMouseButtonDown(1) && grenadeCount > 0 && Time.time >= lastThrowTime + throwCooldown)
         {
             Throw();
         }
@@ -29,7 +29,7 @@ public class GrenadeThrower : MonoBehaviour
 
     public void grenadeCountUpdate()
     {
-        grenadeCount = 5;
+        grenadeCount = 2;
     }
     
     private void Throw()
