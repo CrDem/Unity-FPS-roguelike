@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - Surface
   - PlayerWeapon
+  - Controller
+  - Bullet
   layers:
   - Default
   - TransparentFX

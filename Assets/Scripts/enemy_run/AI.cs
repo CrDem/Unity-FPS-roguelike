@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Второй тип врага
+// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 public enum EnemyType
 {
     Fire,
@@ -14,16 +14,16 @@ public class AI : MonoBehaviour
     public float speed = 5.0f;
     public float obstacleRandle = 5.0f;
     public bool _alive = true;
-    public int health = 10; // Здоровье врага
+    public int health = 10; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 
     [SerializeField]
     private GameObject[] _fireballsPrefab;
 
     [SerializeField]
-    private Transform[] hidingSpots; // Точки укрытия для второго врага
-    public EnemyType enemyType; // Тип врага
-    private bool isHiding = true; // Флаг, указывающий, прячется ли враг
-    private int currentHidingSpotIndex = 0; // Индекс текущего укрытия
+    private Transform[] hidingSpots; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+    public EnemyType enemyType; // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+    private bool isHiding = true; // пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
+    private int currentHidingSpotIndex = 0; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
     private GameObject player;
 
@@ -61,14 +61,14 @@ public class AI : MonoBehaviour
     }
     private void HandleStealthBehavior()
     {
-        // Проверка на расстояние до игрока
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
-        if (distanceToPlayer < 10f && isHiding) // Если игрок близко и враг прячется
+        if (distanceToPlayer < 10f && isHiding) // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         {
-            isHiding = false; // Враг начинает двигаться
+            isHiding = false; // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             MoveToNextHidingSpot();
         }
-        else if (distanceToPlayer >= 10f && !isHiding) // Если игрок далеко, враг возвращается в укрытие
+        else if (distanceToPlayer >= 10f && !isHiding) // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         {
             isHiding = true;
             MoveToCurrentHidingSpot();
@@ -80,78 +80,49 @@ public class AI : MonoBehaviour
         {
             Vector3 targetPosition = hidingSpots[currentHidingSpotIndex].position;
             StartCoroutine(MoveTowards(targetPosition));
-            //transform.position = hidingSpots[currentHidingSpotIndex].position;
-            //Debug.Log("Враг вернулся в укрытие: " + hidingSpots[currentHidingSpotIndex].name);
         }
     }
     private void MoveToNextHidingSpot()
     {
         if (hidingSpots.Length > 0)
         {
-            // Переход к следующему укрытию
-            currentHidingSpotIndex = (currentHidingSpotIndex + 1) % hidingSpots.Length; // Циклический переход
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            currentHidingSpotIndex = (currentHidingSpotIndex + 1) % hidingSpots.Length; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             Vector3 targetPosition = hidingSpots[currentHidingSpotIndex].position;
             StartCoroutine(MoveTowards(targetPosition));
-            //currentHidingSpotIndex = (currentHidingSpotIndex + 1) % hidingSpots.Length; // Циклический переход
-            //transform.position = hidingSpots[currentHidingSpotIndex].position;
-            //Debug.Log("Враг переместился в следующее укрытие: " + hidingSpots[currentHidingSpotIndex].name);
         }
     }
-    //private IEnumerator MoveTowards(Vector3 targetPosition)
-    //{
-    //    while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
-    //    {
-    //        // Рассчитываем направление к цели
-    //        Vector3 direction = (targetPosition - transform.position).normalized;
-
-    //        // Перемещаем врага
-    //        transform.position += direction * speed * Time.deltaTime;
-
-    //        // Проверка на столкновение с препятствиями
-    //        RaycastHit hit;
-    //        if (Physics.Raycast(transform.position, direction, out hit, obstacleRandle))
-    //        {
-    //            // Если столкновение произошло, останавливаем движение
-    //            break;
-    //        }
-
-    //        yield return null; // Ждем следующего кадра
-    //    }
-
-    //    // Устанавливаем позицию точно в укрытие, чтобы избежать небольших ошибок
-    //    transform.position = targetPosition;
-    //    Debug.Log("Враг вернулся в укрытие: " + hidingSpots[currentHidingSpotIndex].name);
-    //}
+   
     private IEnumerator MoveTowards(Vector3 targetPosition)
     {
         while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
         {
-            // Рассчитываем направление к цели
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
             Vector3 direction = (targetPosition - transform.position).normalized;
 
-            // Проверка на столкновение с препятствиями
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             RaycastHit hit;
             if (Physics.Raycast(transform.position, direction, out hit, obstacleRandle))
             {
-                // Если столкновение произошло, пытаемся обойти препятствие
-                Vector3 avoidanceDirection = Vector3.Cross(direction, Vector3.up); // Перпендикулярное направление
-                Vector3 newDirection = Vector3.Lerp(direction, avoidanceDirection, 0.5f).normalized; // Изменяем направление
+                // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+                Vector3 avoidanceDirection = Vector3.Cross(direction, Vector3.up); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+                Vector3 newDirection = Vector3.Lerp(direction, avoidanceDirection, 0.5f).normalized; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
-                // Перемещаем врага в новом направлении
+                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                 transform.position += newDirection * speed * Time.deltaTime;
             }
             else
             {
-                // Если нет столкновения, перемещаем врага в направлении цели
+                // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
                 transform.position += direction * speed * Time.deltaTime;
             }
 
-            yield return null; // Ждем следующего кадра
+            yield return null; // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         }
 
-        // Устанавливаем позицию точно в укрытие, чтобы избежать небольших ошибок
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         transform.position = targetPosition;
-        Debug.Log("Враг вернулся в укрытие: " + hidingSpots[currentHidingSpotIndex].name);
+        Debug.Log("пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " + hidingSpots[currentHidingSpotIndex].name);
     }
 
 
@@ -159,21 +130,21 @@ public class AI : MonoBehaviour
     {
         while (_alive)
         {
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(3.5f);
 
-            // Выбираем случайный префаб огненного шара из массива
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             int randFireball = Random.Range(0, _fireballsPrefab.Length);
             GameObject _fireball = Instantiate(_fireballsPrefab[randFireball]);
 
-            // Устанавливаем позицию огненного шара немного вперед от AI
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ AI
             _fireball.transform.position = transform.TransformPoint(Vector3.forward * 1.5f);
             _fireball.transform.rotation = transform.rotation;
 
-            // Направляем огненный шар в сторону игрока
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             Vector3 directionToPlayer = (player.transform.position - _fireball.transform.position).normalized;
-            _fireball.GetComponent<Rigidbody>().linearVelocity = directionToPlayer * 10f; // Используем linearVelocity
+            _fireball.GetComponent<Rigidbody>().linearVelocity = directionToPlayer * 10f; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ linearVelocity
 
-            // Запускаем корутину для уничтожения огненного шара через 5 секунд
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 5 пїЅпїЅпїЅпїЅпїЅпїЅ
             StartCoroutine(DestroyFireballAfterTime(_fireball, 5f));
         }
     }
@@ -182,7 +153,7 @@ public class AI : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         Destroy(fireball);
-        Debug.Log("Огненный шар уничтожен.");
+        Debug.Log("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
     }
 
     public void SetAlive(bool alive)
@@ -190,23 +161,23 @@ public class AI : MonoBehaviour
         _alive = alive;
     }
 
-    // Метод для получения урона
+    // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
     public void TakeDamage(int damage)
     {
-        health -= damage; // Уменьшаем здоровье на величину урона
-        Debug.Log("Враг получил урон: " + damage + ". Текущее здоровье: " + health);
+        health -= damage; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+        Debug.Log("пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ: " + damage + ". пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " + health);
 
-        // Проверяем, жив ли враг
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
         if (health <= 0)
         {
-            Die(); // Вызываем метод смерти
+            Die(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         }
     }
 
-    // Метод, вызываемый при смерти врага
+    // пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
     private void Die()
     {
-        Debug.Log("Враг умер!");
-        Destroy(gameObject); // Уничтожаем объект врага
+        Debug.Log("пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ!");
+        Destroy(gameObject); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
     }
 } 
