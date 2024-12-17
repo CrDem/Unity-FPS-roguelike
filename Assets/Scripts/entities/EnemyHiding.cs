@@ -20,6 +20,7 @@ public class EnemyHiding : Entity
     
     void Start()
     {
+        diffContoller = GameObject.FindGameObjectWithTag("Controller").GetComponent<DifficultyContoller>();
         // Инициализация CharacterController
         controller = GetComponent<CharacterController>();
         if (controller == null)
@@ -52,6 +53,8 @@ public class EnemyHiding : Entity
 
     void Update()
     {
+        UpdateDifficulty();
+        
         if (controller == null || patrolPoints.Length == 0) return;
 
         // Логика перемещения
@@ -119,7 +122,7 @@ public class EnemyHiding : Entity
     bool CanSeePlayer()
     {
         // Рассчитываем направление от врага к игроку, проецируя на XZ
-        Vector3 direction = player.position - rayOrigin.position;
+        Vector3 direction = rayDirection.position - rayOrigin.position;
 
         // Рисуем отладочный луч
         Debug.DrawRay(rayOrigin.position, direction * detectionRange, Color.red);
@@ -130,13 +133,13 @@ public class EnemyHiding : Entity
             // Отладка: проверим, что мы попали в игрока
             if (hit.transform == player)
             {
-                //Debug.Log("Player detected!");
+                Debug.Log("Player detected!");
                 return true;
             }
-            //else
-            //{
-                //Debug.Log("Hit something else: " + hit.transform.name);
-            //}
+            else
+            {
+                Debug.Log("Hit something else: " + hit.transform.name);
+            }
         }
 
         return false;

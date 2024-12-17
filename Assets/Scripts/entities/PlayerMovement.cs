@@ -62,5 +62,6 @@ public class PlayerMovement : Entity
     {
         Debug.Log("Player has died!");
         SceneManager.LoadScene("MainMenu");
+        Cursor.lockState = CursorLockMode.Confined;
     }
 }

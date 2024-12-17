@@ -514,7 +514,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4298121755286933092}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.00019716207, y: -0.023219753, z: 0.008488433, w: 0.9996943}
+  m_LocalRotation: {x: -0.0060195485, y: 0.0017526768, z: 0.008526747, w: 0.99994403}
   m_LocalPosition: {x: 0.027, y: -0.52, z: 0.552}
   m_LocalScale: {x: 0.10073303, y: 0.092782445, z: 1.3881859}
   m_ConstrainProportionsScale: 0
@@ -524,7 +524,7 @@ Transform:
   - {fileID: 3510486774139291525}
   - {fileID: 1514061904334568248}
   m_Father: {fileID: 3899052107124632780}
-  m_LocalEulerAnglesHint: {x: 0.045, y: -2.661, z: 0.972}
+  m_LocalEulerAnglesHint: {x: -0.691, y: 0.195, z: 0.976}
 --- !u!33 &7036036594605797167
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -612,7 +612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   readyToShoot: 1
-  shootingDelay: 0.25
+  shootingDelay: 0.73
   spreadIntensity: 0.3
   bulletPrefab: {fileID: 3307811665118244738, guid: 193245d73bb4d394c810d9ba15761e47, type: 3}
   bulletSpawn: {fileID: 4705738300503983768}
@@ -647,7 +647,7 @@ Transform:
   m_GameObject: {fileID: 5570436653814090577}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.33, y: 0, z: 0}
+  m_LocalPosition: {x: 0.324, y: 0, z: -0}
   m_LocalScale: {x: 0.81615, y: 0.81615, z: 0.81615}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -690,10 +690,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  speed: 58.5
+  speed: 45.7
   pointA: {fileID: 4819792385027245292}
   pointB: {fileID: 7036328894129063733}
-  patrolSpeed: 9.73
+  patrolSpeed: 7.98
 --- !u!143 &4516661597862006796
 CharacterController:
   m_ObjectHideFlags: 0

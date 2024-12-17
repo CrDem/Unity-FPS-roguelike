@@ -93,6 +93,7 @@ public class Weapon : MonoBehaviour
     
     void ReloadWeapon()
     {
+	    if (bulletLeft == bulletMax) return;
 	    reloadingTimeLeft = reloadingTime;
 	    isReloading = true;
     }
@@ -100,7 +101,7 @@ public class Weapon : MonoBehaviour
 	private void FireWeapon()
 	{
 		if (bulletLeft <= 0) ReloadWeapon();
-
+		
 		--bulletLeft;
 		readyToShoot = false;
 		Vector3 shootingDirection = CalculateSpreadedDir().normalized;
@@ -128,7 +129,7 @@ public class Weapon : MonoBehaviour
 		RaycastHit hit;
 		
 		Vector3 targetPoint;
-		if (Physics.Raycast(ray, out hit) && hit.distance > 1f)
+		if (Physics.Raycast(ray, out hit) && hit.distance > 1f && !hit.collider.CompareTag("Bullet"))
 		{
 			targetPoint = hit.point;
 		}

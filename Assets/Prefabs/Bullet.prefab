@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 972234975558134696}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4a0ac8dcbe241b47a4595a608a7200f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
 --- !u!96 &4494385486226833889
 TrailRenderer:
   serializedVersion: 3

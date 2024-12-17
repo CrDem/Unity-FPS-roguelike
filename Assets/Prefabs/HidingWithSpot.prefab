@@ -274,14 +274,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 150
-  speed: 61.9
+  speed: 53
   patrolPoints:
   - {fileID: 1271319066809812771}
   - {fileID: 4013181875758637319}
   - {fileID: 8080024748142506626}
   - {fileID: 5046639446897460381}
-  patrolSpeed: 5
-  detectionRange: 20.71
+  patrolSpeed: 10.29
+  detectionRange: 17
   rayOrigin: {fileID: 4365989248197205679}
   rayDirection: {fileID: 8604276045451689461}
   obstacleMask:
@@ -537,7 +537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   readyToShoot: 1
   shootingDelay: 0.92
-  spreadIntensity: 0.12
+  spreadIntensity: 0.18
   bulletPrefab: {fileID: 3307811665118244738, guid: 193245d73bb4d394c810d9ba15761e47, type: 3}
   bulletSpawn: {fileID: 8604276045451689461}
   handleGun: {fileID: 4365989248197205679}

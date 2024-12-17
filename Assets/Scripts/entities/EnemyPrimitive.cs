@@ -12,7 +12,11 @@ public class EnemyPrimitive : Entity
 
     void Start()
     {
+
+        diffContoller = GameObject.FindGameObjectWithTag("Controller").GetComponent<DifficultyContoller>();
+
         // Инициализация CharacterController
+        
         controller = GetComponent<CharacterController>();
         if (controller == null)
         {
@@ -35,10 +39,12 @@ public class EnemyPrimitive : Entity
         }
     }
 
+    
     void Update()
     {
         if (controller == null) return;
-
+        UpdateDifficulty();
+        
         // Логика перемещения
         Vector3 move = CalculateMovement();
         Move(move, patrolSpeed);

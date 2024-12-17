@@ -25,6 +25,8 @@ public class AK47: MonoBehaviour
 	// Update is called once per frame
     void Update()
     {
+	    UpdateDifficulty();
+	    
 	    if (readyToShoot)
 	    {
 		    FireWeapon();

@@ -4,6 +4,8 @@ public class Entity : MonoBehaviour
 {
     // Здоровье персонажа
     public float health = 100f;
+    public float additionalHealth;
+    public DifficultyContoller diffContoller;
 
     // Скорость движения
     public float speed = 12f;
@@ -14,11 +16,18 @@ public class Entity : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-            Die();
+            if (additionalHealth + health <= 0)
+                Die();
         }
     }
+    
+    protected void UpdateDifficulty()
+    {
+        additionalHealth = diffContoller.GetLevel() * 20;
+    }
+    
 
-    // Метод, вызываемый при смерти
+// Метод, вызываемый при смерти
     protected virtual void Die()
     {
         Debug.Log($"{gameObject.name} has died.");
