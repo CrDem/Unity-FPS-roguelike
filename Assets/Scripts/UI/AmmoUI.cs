@@ -20,6 +20,5 @@ public class PlayerUIManaget : MonoBehaviour
             ammoText.text = "R";
         else
             ammoText.text = gun.bulletLeft.ToString();
-        //ammoText = gun.bulletLeft;
     }
 }

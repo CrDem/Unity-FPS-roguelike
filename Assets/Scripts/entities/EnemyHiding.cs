@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyHiding : Entity
@@ -80,8 +81,10 @@ public class EnemyHiding : Entity
         // Если враг достиг текущей цели, переходим к следующей точке маршрута
         if (Vector3.Distance(flatPosition, flatTarget) < 0.1f)
         {
-            // Переходим к следующей точке в списке
-            currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
+            if (currentPatrolIndex < patrolPoints.Length - 1)
+            {
+                ++currentPatrolIndex;
+            }
             targetPoint = patrolPoints[currentPatrolIndex].position; // Обновляем цель
             running = false;
         }

@@ -12,7 +12,6 @@ public class Entity : MonoBehaviour
     public virtual void TakeDamage(float damage)
     {
         health -= damage;
-        Debug.Log("damage");
         if (health <= 0)
         {
             Die();

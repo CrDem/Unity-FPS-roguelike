@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -20,6 +21,8 @@ public class Weapon : MonoBehaviour
 	public GameObject bulletPrefab;
 	public Transform bulletSpawn;
 	public float bulletVelocity = 30f;
+
+	public int damage = 50;
 
 	public int bulletMax = 30;
 	public int bulletLeft;
@@ -96,12 +99,13 @@ public class Weapon : MonoBehaviour
 
 	private void FireWeapon()
 	{
-		if (bulletLeft <= 0) return;
+		if (bulletLeft <= 0) ReloadWeapon();
 
 		--bulletLeft;
 		readyToShoot = false;
 		Vector3 shootingDirection = CalculateSpreadedDir().normalized;
 		GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity);
+		bullet.GetComponent<Bullet>().damage = damage;
 		bullet.transform.forward = shootingDirection;
 		bullet.GetComponent<Rigidbody>().AddForce(shootingDirection * bulletVelocity, ForceMode.Impulse);
 

@@ -4,13 +4,13 @@ public class Bullet : MonoBehaviour
 {
     private int reboundLeft = 2;
     private Vector3 lastPos;
+    public int damage;
 
     // Время задержки перед удалением объекта
     private float delay = 4f;
 
     void Start()
     {
-        // Удаляем объект через указанное время
         Destroy(gameObject, delay);
     }
     
@@ -24,8 +24,8 @@ public class Bullet : MonoBehaviour
             // Если компонент найден, наносим урон
             if (entity != null)
             {
-                Debug.Log("damage");
-                entity.TakeDamage(25f);
+                Debug.Log(damage);
+                entity.TakeDamage(damage);
             }
             
             Destroy(gameObject);
